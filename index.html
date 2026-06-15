@@ -15,7 +15,7 @@
             padding: 0;
             height: 130vh;
             align-items: center;
-            display: top;
+            display: flex;
             background-color: rgb(255, 255, 255);
         }
         .list-treatment {
@@ -71,7 +71,7 @@
             color: black; /* Black color for better contrast */
             border-radius: 5px;
             font-size: 14px;
-            display: top;
+            display: flex;
             align-items: center;
             justify-content: center;
         }
@@ -177,7 +177,7 @@
             background: rgb(19, 19, 19);
             color: orangered;
             padding: 20px;
-            BORDER-RADIUS: 20px;
+            border-radius: 20px;
             align-items: center;
             text-align: center;
             margin-top: 60px;
@@ -209,7 +209,6 @@
                 position: fixed;
                 bottom: 0;
                 width: 100%;
-                size: 30px;
                 padding: 0;
                 height: 2.6vh;
                 border-radius: 20px;
@@ -230,9 +229,8 @@
         footer {
                 position: fixed;
                 left: 0;
-                bottom: top;
+                bottom: 0;
                 width: 100%;
-                size: 30px;
                 padding: 0;
                 height: 3.8vh;
                 border-radius: 20px;
@@ -249,9 +247,8 @@
         footer.dark-mode {
                 position: fixed;
                 left: 0;
-                bottom: top;
+                bottom: 0;
                 width: 100%;
-                size: 30px;
                 padding: 0;
                 height: 3.8vh;
                 border-radius: 20px;
@@ -267,7 +264,7 @@
             margin-bottom: 60px;
             width: 100%; /* Each row takes the full width */
             flex: 1%; /* Adjust the width of each footer-row */
-            display: top;
+            display: flex;
             align-items: center;
             justify-content: center;
             padding: 23px;
@@ -279,7 +276,7 @@
             margin-bottom: 60px;
             width: 100%; /* Each row takes the full width */
             flex: 1%; /* Adjust the width of each footer-row */
-            display: top;
+            display: flex;
             align-items: center;
             justify-content: center;
             padding: 23px;
@@ -336,9 +333,25 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+    <script>
+        // Modalità scura
+        const storedMode = localStorage.getItem('mode');
+        if (storedMode) {
+            applyMode(storedMode);
+        }
+        $('#darkModeToggle').click(function(){
+            const isDarkMode = $('body').hasClass('dark-mode');
+            const newMode = isDarkMode ? 'light-mode' : 'dark-mode';
+            localStorage.setItem('mode', newMode);
+            applyMode(newMode);
+        });
+        function applyMode(mode) {
+            $('body, nav, section, footer, .footer-row a, .section-2, .footer-row, button').removeClass('dark-mode light-mode').addClass(mode);
+        }
+    </script>
        <section>
               <img src = "https://arancia313.github.io/Arancia%203.jpg">
-              <h2>Arancia 3</h2>
+              <h2>Arancia 3 <a id="darkModeToggle" href="#" aria-label="Toggle dark mode"><img src="https://arancia313.github.io/BarnyShare/static/assets/system/moon.png" alt="Moon Icon" style="height:20px;vertical-align:middle"></a></h2>
               <p style="color:rgb(0, 255, 0);text-decoration:none">Arancia 3 is here.</p>
               <p>Hi! I am Arancia 3, the owner of this Scratch mod.
                  I am known for making content on <a style = "color:red" href = "https://www.youtube.com/@Arancia_3">Youtube</a>, <a style = "color:rgb(255, 170, 0)" href = "https://scratch.mit.edu/users/Arancia_Carnivora">Scratch</a>, <a style = "color:rgb(0, 170, 255)" href = "https://penguinmod.com/profile/?user=arancia_ahh">Penguinmod</a>, and here.
